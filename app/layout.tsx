@@ -4,10 +4,9 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "BuildTech Engineering - Professional Construction & Engineering Services",
+  title: "Seba Engineering & Construction Ltd",
   description:
-    "Leading engineering and construction company specializing in commercial, residential, and infrastructure projects. Quality construction solutions with innovative engineering.",
-  generator: "v0.app",
+    "Seba Engineering & Construction Ltd is a leading construction company specializing in high-quality engineering and construction services. We are committed to delivering excellence in every project we undertake, ensuring customer satisfaction and sustainable development.",
 }
 
 export default function RootLayout({
