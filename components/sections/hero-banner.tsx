@@ -246,7 +246,7 @@ export default function HeroBanner() {
                   </h1>
 
                   {/* Subtitle */}
-                  <h2 className="hero-subtitle text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:mb-12 xl:mt-12 relative">
+                  <h2 className="hero-subtitle text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 mt-6 xl:mb-12 xl:mt-12 relative">
                     <span className="relative inline-block text-slate-400">
                       {slide.subtitle}
                       <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full opacity-60"></div>
