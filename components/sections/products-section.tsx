@@ -41,9 +41,9 @@ const products = [
   },
   {
     id: 4,
-    name: "Smart Building Controls",
+    name: "Smart Building Controls",  
     category: "Technology",
-    image: "/images/product-1.jpg",
+    image: "/images/steel-image4.jpg",
     description: "Advanced building automation systems for energy management and operational efficiency.",
     features: ["IoT Integration", "Energy Monitoring", "Remote Control", "Analytics Dashboard"],
     rating: 4.9,
@@ -121,12 +121,7 @@ export default function ProductsSection() {
           ))}
         </div>
 
-        <div className="text-center">
-          <Button size="lg" className="bg-orange-500 hover:bg-orange-500/90" onClick={handleViewAllProducts}>
-            View All Products
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+        
       </div>
     </section>
   )

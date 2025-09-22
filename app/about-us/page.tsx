@@ -15,21 +15,21 @@ const team = [
   {
     name: "Md. Monnaf Hossain (Shakil)",
     position: "CEO & Founder",
-    image: "/images/team-1.jpg",
+    image: "/images/ceo-seba-eng.jpg",
     description: "25+ years in construction and engineering leadership",
   },
-  {
-    name: "Sarah Chen",
-    position: "Chief Engineer",
-    image: "/images/team-2.jpg",
-    description: "Structural engineering expert with international experience",
-  },
-  {
-    name: "Michael Rodriguez",
-    position: "Project Director",
-    image: "/images/team-3.jpg",
-    description: "Specializes in large-scale infrastructure projects",
-  },
+  // {
+  //   name: "Sarah Chen",
+  //   position: "Chief Engineer",
+  //   image: "/images/team-2.jpg",
+  //   description: "Structural engineering expert with international experience",
+  // },
+  // {
+  //   name: "Michael Rodriguez",
+  //   position: "Project Director",
+  //   image: "/images/team-3.jpg",
+  //   description: "Specializes in large-scale infrastructure projects",
+  // },
   
 ]
 
@@ -102,18 +102,19 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-              Meet Our Leadership Team
+              Meet Our CEO
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Our experienced leadership team brings decades of expertise and a shared commitment to excellence in every
+              Our experienced Team brings decades of expertise and a shared commitment to excellence in every
               project we undertake.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap gap-8 justify-center">
             {team.map((member, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <img src={member.image || "/placeholder.svg"} alt={member.name} className="w-full h-64 object-cover" />
+                <img src={member.image || "/placeholder.svg"} alt={member.name} className="w-full h-96 object-cover" />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-balance">{member.name}</h3>
                   <Badge variant="secondary" className="mb-3">
@@ -123,6 +124,7 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
           </div>
         </div>
       </section>

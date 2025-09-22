@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Star, ShoppingCart, CheckCircle, Info } from "lucide-react"
+import Link from 'next/link'
 
 const products = [
   {
@@ -96,7 +97,7 @@ const products = [
     id: 4,
     name: "Smart Building Controls",
     category: "Technology",
-    image: "/images/product-4.jpg",
+    image: "/images/steel-image4.jpg",
     description: "Advanced building automation systems for energy management and operational efficiency.",
     features: ["IoT Integration", "Energy Monitoring", "Remote Control", "Analytics Dashboard"],
     rating: 4.9,
@@ -250,15 +251,13 @@ export default function ProductDetailPage() {
               <p className="text-sm text-muted-foreground mb-4">
                 Contact our sales team for pricing, availability, and custom specifications.
               </p>
-              <div className="space-y-2">
-                <Button className="w-full" onClick={() => router.push("/contact-us")}>
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  Request Quote
-                </Button>
-                <Button variant="outline" className="w-full bg-transparent">
-                  <Info className="mr-2 h-4 w-4" />
-                  Download Specs
-                </Button>
+              <div>
+                <Link href="/contact-us" className="w-full">
+  <Button className="w-full">
+    <ShoppingCart className="mr-2 h-4 w-4" />
+    Request Quote
+  </Button>
+</Link>
               </div>
             </div>
 
@@ -266,9 +265,9 @@ export default function ProductDetailPage() {
             <div className="border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-4">Sales Contact</h3>
               <div className="space-y-2 text-sm">
-                <p>📞 (555) 123-4567</p>
-                <p>✉️ sales@engineeringco.com</p>
-                <p>📍 123 Construction Ave, City, State 12345</p>
+                <p>📞 +88 01716-475689</p>
+                <p>✉️ shebaengineering2021@gmail.com</p>
+                <p>📍 C/52, Soronika Residential Area, Savar, Dhaka-1340</p>
               </div>
             </div>
           </div>

@@ -158,12 +158,7 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        <div className="text-center">
-          <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white" onClick={handleViewAllProjects}>
-            View All Projects
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+        
       </div>
     </section>
   )

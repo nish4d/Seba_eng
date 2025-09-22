@@ -277,9 +277,9 @@ export default function ServiceDetailPage() {
             <div className="border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-4">Need More Information?</h3>
               <div className="space-y-2 text-sm">
-                <p>📞 (555) 123-4567</p>
-                <p>✉️ info@engineeringco.com</p>
-                <p>📍 123 Construction Ave, City, State 12345</p>
+                <p>📞 +88 01716-475689</p>
+                <p>✉️ shebaengineering2021@gmail.com</p>
+                <p>📍 C/52, Soronika Residential Area, Savar, Dhaka-1340</p>
               </div>
             </div>
           </div>

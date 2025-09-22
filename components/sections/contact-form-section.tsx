@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react"
+import emailjs from '@emailjs/browser'
 
 export default function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -19,10 +20,53 @@ export default function ContactFormSection() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  // Initialize EmailJS with your public key
+  const initEmailJS = () => {
+    emailjs.init("ZY-yqh5zxUtlbKque") // Replace with your actual public key from EmailJS
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    // Initialize EmailJS
+    initEmailJS()
+
+    try {
+      const result = await emailjs.send(
+        'service_eijkdbl',    // Replace with your EmailJS service ID
+        'template_1rgviex',   // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'shebaengineering2021@gmail.com', // Your email
+        }
+      )
+      
+      console.log('SUCCESS!', result.status, result.text)
+      setSubmitStatus('success')
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      })
+    } catch (error) {
+      console.log('FAILED...', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -133,6 +177,7 @@ export default function ContactFormSection() {
                         onChange={handleChange}
                         required
                         className="transition-all duration-300 focus:shadow-lg"
+                        disabled={isSubmitting}
                       />
                     </motion.div>
                     <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
@@ -144,6 +189,7 @@ export default function ContactFormSection() {
                         onChange={handleChange}
                         required
                         className="transition-all duration-300 focus:shadow-lg"
+                        disabled={isSubmitting}
                       />
                     </motion.div>
                   </div>
@@ -156,6 +202,7 @@ export default function ContactFormSection() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="transition-all duration-300 focus:shadow-lg"
+                        disabled={isSubmitting}
                       />
                     </motion.div>
                     <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
@@ -166,6 +213,7 @@ export default function ContactFormSection() {
                         onChange={handleChange}
                         required
                         className="transition-all duration-300 focus:shadow-lg"
+                        disabled={isSubmitting}
                       />
                     </motion.div>
                   </div>
@@ -179,15 +227,52 @@ export default function ContactFormSection() {
                       required
                       rows={5}
                       className="transition-all duration-300 focus:shadow-lg"
+                      disabled={isSubmitting}
                     />
                   </motion.div>
 
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-500/90 text-white font-semibold py-3">
-                      <Send className="h-4 w-4 mr-2" />
-                      Send Message
+                  <motion.div whileHover={{ scale: isSubmitting ? 1 : 1.05 }} whileTap={{ scale: isSubmitting ? 1 : 0.95 }}>
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-orange-500 hover:bg-orange-500/90 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4 mr-2" />
+                          Send Message
+                        </>
+                      )}
                     </Button>
                   </motion.div>
+
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center justify-center space-x-2 text-green-600 bg-green-50 p-4 rounded-lg border border-green-200"
+                    >
+                      <CheckCircle className="h-5 w-5" />
+                      <span className="font-medium">Message sent successfully! We'll get back to you soon.</span>
+                    </motion.div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center justify-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg border border-red-200"
+                    >
+                      <AlertCircle className="h-5 w-5" />
+                      <span className="font-medium">Failed to send message. Please try again or contact us directly.</span>
+                    </motion.div>
+                  )}
                 </form>
               </CardContent>
             </Card>

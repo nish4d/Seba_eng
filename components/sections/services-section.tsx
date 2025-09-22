@@ -109,12 +109,7 @@ export default function ServicesSection() {
           })}
         </div>
 
-        <div className="text-center">
-          <Button size="lg" className="bg-orange-500-400 hover:bg-orange-500/90" onClick={handleViewAllServices}>
-            View All Services
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+        
       </div>
     </section>
   )
