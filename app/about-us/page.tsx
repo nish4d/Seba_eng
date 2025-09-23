@@ -121,7 +121,7 @@ export default function AboutPage() {
                     <span className="text-gray-600">Sustainable construction practices</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"> </div>
                     <span className="text-gray-600">Building lasting relationships</span>
                   </div>
                 </div>
