@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Users, Award, Calendar, Target, Rocket, Eye, Building2, Star } from "lucide-react"
 import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"
+import Link from 'next/link';
 
 const stats = [
   { icon: Calendar, label: "Years of Experience", value: "25+" },
@@ -163,11 +164,14 @@ export default function AboutPage() {
 
           {/* CTA Button */}
           <div className="text-center mt-16">
-            <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-              <Building2 className="w-5 h-5 mr-2" />
-              Start Your Project Today
-            </button>
-          </div>
+  <Link 
+    href="/contact-us"
+    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+  >
+    <Building2 className="w-5 h-5 mr-2" />
+    Start Your Project Today
+  </Link>
+</div>
         </div>
       </section>
 

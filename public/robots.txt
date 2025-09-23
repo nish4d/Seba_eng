@@ -1,0 +1,13 @@
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://seba-eng.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block sensitive areas if any
+# Disallow: /admin/
+# Disallow: /private/
