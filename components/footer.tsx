@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const socialLinks = [
-  { Icon: Facebook, href: "https://facebook.com/yourpage" },
-  { Icon: Twitter, href: "https://twitter.com/yourprofile" },
-  { Icon: Linkedin, href: "https://linkedin.com/in/yourprofile" },
-  { Icon: Instagram, href: "https://instagram.com/yourprofile" },
+  { Icon: Facebook, href: "https://www.facebook.com/ShakiIislameee" },
+  { Icon: Twitter, href: "https://twitter.com/" },
+  { Icon: Linkedin, href: "https://linkedin.com/" },
+  { Icon: Instagram, href: "https://instagram.com/" },
 ]
 
 export default function Footer() {

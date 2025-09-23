@@ -15,7 +15,7 @@ const heroSlides = [
     primaryButton: "View Our Projects",
     secondaryButton: "Watch Our Story",
     primaryLink: "/projects",
-    secondaryLink: "https://youtube.com/yourvideo",
+    secondaryLink: "https://www.youtube.com/@workinglife8348",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const heroSlides = [
     primaryButton: "Our Experience",
     secondaryButton: "Project Gallery",
     primaryLink: "/media-gallery",
-    secondaryLink: "https://youtube.com/yourvideo",
+    secondaryLink: "/media-gallery",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const heroSlides = [
     primaryButton: "Green Projects",
     secondaryButton: "Learn More",
     primaryLink: "/products",
-    secondaryLink: "https://youtube.com/yourvideo",
+    secondaryLink: "https://www.youtube.com/@workinglife8348",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const heroSlides = [
     primaryButton: "Our Services",
     secondaryButton: "Contact Us",
     primaryLink: "/our-services",
-    secondaryLink: "https://youtube.com/yourvideo",
+    secondaryLink: "/contact-us",
   },
 ]
 

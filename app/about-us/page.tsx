@@ -27,7 +27,7 @@ const team = [
   {
     name: "Engr. Md. Shakil Islam",
     position: "Chief Engineer",
-    image: "/images/chf-eng.jpg",
+    image: "/images/Eng-shakil.jpg",
     description: "Structural engineering expert with international experience",
   },
 ]
@@ -48,7 +48,7 @@ export default function AboutPage() {
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
               About 
-              <span className="text-orange-500 block md:inline"> Seba Engineering</span>
+              <span className="text-orange-500 block md:inline"> Sheba Engineering</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               For over 25 years, we've been crafting exceptional construction solutions that shape communities and drive progress through innovation and excellence.
@@ -194,7 +194,7 @@ export default function AboutPage() {
                   <img 
                     src={member.image || "/placeholder.svg"} 
                     alt={member.name} 
-                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700" 
+                    className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
