@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react"
-import emailjs from '@emailjs/browser'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -18,41 +25,43 @@ export default function ContactFormSection() {
     phone: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   // Initialize EmailJS with your public key
   const initEmailJS = () => {
-    emailjs.init("ZY-yqh5zxUtlbKque") // Replace with your actual public key from EmailJS
-  }
+    emailjs.init("ZY-yqh5zxUtlbKque"); // Replace with your actual public key from EmailJS
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
 
     // Initialize EmailJS
-    initEmailJS()
+    initEmailJS();
 
     try {
       const result = await emailjs.send(
-        'service_eijkdbl',    // Replace with your EmailJS service ID
-        'template_1rgviex',   // Replace with your EmailJS template ID
+        "service_eijkdbl", // Replace with your EmailJS service ID
+        "template_1rgviex", // Replace with your EmailJS template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'shebaengineering2021@gmail.com', // Your email
+          to_email: "shebaengineering2021@gmail.com", // Your email
         }
-      )
-      
-      console.log('SUCCESS!', result.status, result.text)
-      setSubmitStatus('success')
-      
+      );
+
+      console.log("SUCCESS!", result.status, result.text);
+      setSubmitStatus("success");
+
       // Reset form
       setFormData({
         name: "",
@@ -60,21 +69,23 @@ export default function ContactFormSection() {
         phone: "",
         subject: "",
         message: "",
-      })
+      });
     } catch (error) {
-      console.log('FAILED...', error)
-      setSubmitStatus('error')
+      console.log("FAILED...", error);
+      setSubmitStatus("error");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <section className="py-20 bg-gradient-to-br from-background to-muted/20">
@@ -86,9 +97,12 @@ export default function ContactFormSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Get In Touch
+          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your next project? Contact us today for a free consultation and quote.
+            Ready to start your next project? Contact us today for a free
+            consultation and quote.
           </p>
         </motion.div>
 
@@ -102,7 +116,9 @@ export default function ContactFormSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -126,7 +142,9 @@ export default function ContactFormSection() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">Email</p>
-                    <p className="text-muted-foreground">shebaengineering2021@gmail.com</p>
+                    <p className="text-muted-foreground">
+                      shebaengineering2021@gmail.com
+                    </p>
                   </div>
                 </motion.div>
 
@@ -139,18 +157,21 @@ export default function ContactFormSection() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">Address</p>
-                    <p className="text-muted-foreground">Office: C/52, Soronika Residential Area, Savar, Dhaka-1340</p>
+                    <p className="text-muted-foreground">
+                      Office: C/52, Soronika Residential Area, Savar, Dhaka-1340
+                    </p>
                   </div>
                 </motion.div>
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Business Hours</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-4">
+                Business Hours
+              </h4>
               <div className="space-y-2 text-muted-foreground">
-                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                <p>Saturday: 9:00 AM - 4:00 PM</p>
-                <p>Sunday: Closed</p>
+                <p>Saturday - Thursday: 8:00 AM - 6:00 PM</p>
+                <p>Friday: Closed</p>
               </div>
             </div>
           </motion.div>
@@ -164,12 +185,17 @@ export default function ContactFormSection() {
           >
             <Card className="shadow-xl">
               <CardHeader>
-                <CardTitle className="text-2xl text-center">Send Us a Message</CardTitle>
+                <CardTitle className="text-2xl text-center">
+                  Send Us a Message
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Input
                         name="name"
                         placeholder="Your Name"
@@ -180,7 +206,10 @@ export default function ContactFormSection() {
                         disabled={isSubmitting}
                       />
                     </motion.div>
-                    <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Input
                         name="email"
                         type="email"
@@ -195,7 +224,10 @@ export default function ContactFormSection() {
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
-                    <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Input
                         name="phone"
                         placeholder="Your Phone"
@@ -205,7 +237,10 @@ export default function ContactFormSection() {
                         disabled={isSubmitting}
                       />
                     </motion.div>
-                    <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Input
                         name="subject"
                         placeholder="Subject"
@@ -218,7 +253,10 @@ export default function ContactFormSection() {
                     </motion.div>
                   </div>
 
-                  <motion.div whileFocus={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                  <motion.div
+                    whileFocus={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <Textarea
                       name="message"
                       placeholder="Your Message"
@@ -231,9 +269,12 @@ export default function ContactFormSection() {
                     />
                   </motion.div>
 
-                  <motion.div whileHover={{ scale: isSubmitting ? 1 : 1.05 }} whileTap={{ scale: isSubmitting ? 1 : 0.95 }}>
-                    <Button 
-                      type="submit" 
+                  <motion.div
+                    whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                  >
+                    <Button
+                      type="submit"
                       disabled={isSubmitting}
                       className="w-full bg-orange-500 hover:bg-orange-500/90 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
@@ -252,25 +293,30 @@ export default function ContactFormSection() {
                   </motion.div>
 
                   {/* Status Messages */}
-                  {submitStatus === 'success' && (
+                  {submitStatus === "success" && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-center justify-center space-x-2 text-green-600 bg-green-50 p-4 rounded-lg border border-green-200"
                     >
                       <CheckCircle className="h-5 w-5" />
-                      <span className="font-medium">Message sent successfully! We'll get back to you soon.</span>
+                      <span className="font-medium">
+                        Message sent successfully! We'll get back to you soon.
+                      </span>
                     </motion.div>
                   )}
 
-                  {submitStatus === 'error' && (
+                  {submitStatus === "error" && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-center justify-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg border border-red-200"
                     >
                       <AlertCircle className="h-5 w-5" />
-                      <span className="font-medium">Failed to send message. Please try again or contact us directly.</span>
+                      <span className="font-medium">
+                        Failed to send message. Please try again or contact us
+                        directly.
+                      </span>
                     </motion.div>
                   )}
                 </form>
@@ -280,5 +326,5 @@ export default function ContactFormSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
