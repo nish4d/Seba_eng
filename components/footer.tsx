@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const socialLinks = [
-  { Icon: Facebook, href: "https://www.facebook.com/ShakiIislameee" },
+  { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61581519381304" },
   { Icon: Twitter, href: "https://twitter.com/" },
   { Icon: Linkedin, href: "https://linkedin.com/" },
   { Icon: Instagram, href: "https://instagram.com/" },
